@@ -136,7 +136,7 @@ post '/projects/:id/image' do
   filename = params[:file][:filename]
   path = "/project_images/#{filename}"
   
-  File.open("public/#{path}", 'wb') do |f|
+  File.open("public#{path}", 'wb') do |f|
     f.write(file.read)
   end
   
@@ -152,9 +152,11 @@ post '/projects/:id/update_image' do
   filename = params[:file][:filename]
   path = "/project_images/#{filename}"
   
-  File.open("public/#{path}", 'wb') do |f|
+  File.open("public#{path}", 'wb') do |f|
     f.write(file.read)
   end
+  
+  File.delete("public#{old_file}")
   
   @db.update_project_image(id, path)
   session[:success] = "Image successfully updated"
@@ -165,7 +167,7 @@ post '/projects/:id/delete_image' do
   id = params[:id]
   old_file = params[:old_image]
   
-  File.delete("public/#{old_file}")
+  File.delete("public#{old_file}")
   
   @db.update_project_image(id, nil)
   session[:success] = "Image successfully removed"
