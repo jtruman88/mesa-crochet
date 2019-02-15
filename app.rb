@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/content_for'
 require "sinatra/json"
 require 'tilt/erubis'
+require 'cloudinary'
 
 require_relative "database"
 
@@ -133,12 +134,14 @@ end
 post '/projects/:id/image' do
   id = params[:id]
   file = params[:file][:tempfile]
-  filename = params[:file][:filename]
-  path = "/project_images/#{filename}"
   
-  File.open("public#{path}", 'wb') do |f|
-    f.write(file.read)
-  end
+  auth = {
+    cloud_name: "trucloud",
+    api_key: '284131877643259',
+    api_secret: "jfYE2dj0o93zhujNPltqtWa3ZTo"
+  }
+  
+  path = Cloudinary::Uploader.upload(file, auth)['secure_url']
   
   @db.update_project_image(id, path)
   session[:success] = "Image successfully added"
@@ -147,16 +150,18 @@ end
 
 post '/projects/:id/update_image' do
   id = params[:id]
-  old_file = params[:old_image]
+  old_file = params[:old_image].split('/').last.split('.').first
   file = params[:file][:tempfile]
-  filename = params[:file][:filename]
-  path = "/project_images/#{filename}"
   
-  File.open("public#{path}", 'wb') do |f|
-    f.write(file.read)
-  end
+  auth = {
+    cloud_name: "trucloud",
+    api_key: '284131877643259',
+    api_secret: "jfYE2dj0o93zhujNPltqtWa3ZTo"
+  }
   
-  File.delete("public#{old_file}")
+  path = Cloudinary::Uploader.upload(file, auth)['secure_url']
+  
+  Cloudinary::Uploader.destroy(old_file, auth)
   
   @db.update_project_image(id, path)
   session[:success] = "Image successfully updated"
@@ -165,9 +170,15 @@ end
 
 post '/projects/:id/delete_image' do
   id = params[:id]
-  old_file = params[:old_image]
+  old_file = params[:old_image].split('/').last.split('.').first
   
-  File.delete("public#{old_file}")
+  auth = {
+    cloud_name: "trucloud",
+    api_key: '284131877643259',
+    api_secret: "jfYE2dj0o93zhujNPltqtWa3ZTo"
+  }
+  
+  Cloudinary::Uploader.destroy(old_file, auth)
   
   @db.update_project_image(id, nil)
   session[:success] = "Image successfully removed"
