@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%= @title %></title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <script src="/javascripts/jquery.js"></script>
+    <script src="/javascripts/script.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Mesa's Crochet Projects</h1>
+    </header>
+    <section id="flash-messages">
+      <% if session[:success] %>
+        <div class="success">
+          <p><%= session.delete(:success) %></p>
+        </div>
+      <% end %>
+    </section>
+    <main>
+    <%== yield %>
+    </main>
+    <nav>
+      <ul>
+        <%== yield_content :nav_links %>
+      </ul>
+    </nav>
+  </body>
+</html>

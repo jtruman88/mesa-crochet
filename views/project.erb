@@ -1,0 +1,97 @@
+<h2><%= @project[:name] %></h2>
+<% if @project[:image] %>
+  <img id="project-img" src="<%= @project[:image] %>">
+  <section class="upload">
+    <form action="/projects/<%= @id %>/update_image" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="old_image" value="<%= @project[:image] %>">
+      <label for="file">Choose Image...</label>
+      <input id="file" type="file" name="file" accept="image/png, image/jpeg">
+      <input type="submit" value="Update Image">
+    </form>
+    or
+    <form action="/projects/<%= @id %>/delete_image" method="post">
+      <input type="hidden" name="old_image" value="<%= @project[:image] %>">
+      <input type="submit" value="Delete Image">
+    </form>
+  </section>
+<% else %>
+  <section class="upload">
+    <form action="/projects/<%= @id %>/image" method="post" enctype="multipart/form-data">
+      <label for="file">Choose Image...</label>
+      <input id="file" type="file" name="file" accept="image/png, image/jpeg">
+      <input type="submit" value="Save Image">
+    </form>
+  </section>
+<% end %>
+
+<section id="project-info">
+  <section>
+    <h3>Supplies</h3>
+    <ul class="info">
+      <li class="label">Yarn Brand:</li><li class="value"><%= @project[:yarn] %></li><br>
+      <li class="label">Yarn Colors:</li><li class="value"><%= @project[:colors] %></li><br>
+      <li class="label">Yarn Weight:</li><li class="value"><%= @project[:weight] %></li><br>
+      <li class="label">Hook Size:</li><li class="value"><%= @project[:hook] %></li><br>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Info</h3>
+    <ul class="info">
+      <li class="label">Making For:</li><li class="value"><%= @project[:for] %></li><br>
+      <li class="label">Date Added:</li><li class="value"><%= @project[:date_added] %></li><br>
+      <li class="label">Status:</li><li class="value"><%= @project[:status] %></li><br>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Pattern</h3>
+    <% if @project[:link] != '' %>
+      <a target="_blank" href="<%= @project[:link] %>">Go To Original Site</a>
+    <% end %>
+
+    <a data-id="show-pattern" href="#">Show Pattern</a>
+    <form id="pattern" class="hidden" action="/projects/<%= @id %>/update_pattern" method="post">
+      <textarea data-id="pattern" name="pattern"><%= @project[:pattern] %></textarea>
+      <input type="submit" value="Save Changes">
+    </form>
+
+    <a data-id="show-notes" href="#">Show Notes</a>
+    <form id="notes" class="hidden" action="/projects/<%= @id %>/update_notes" method="post">
+      <textarea data-id="notes" name="notes"><%= @project[:notes] %></textarea>
+      <input type="submit" value="Save Changes">
+    </form>
+  </section>
+
+  <ul id="project-btns">
+    <li>
+      <a href="/projects/<%= @id %>/edit">Edit</a>
+    </li>
+    <% if @project[:status] != 'Finished' %>
+    <li>
+      <form data-id="complete" action="/projects/<%= @id %>/complete" method="post">
+        <input type="submit" value="Complete">
+      </form>
+    </li>
+    <% end %>
+    <li>
+      <a href="/projects/<%= @id %>/copy">Duplicate</a>
+    </li>
+    <li>
+      <form id="delete" action="/projects/<%= @id %>/delete" method="post">
+        <input type="hidden" name="project_image" value="<%= @project[:image] %>">
+        <input type="submit" value="Delete">
+      </form>
+    </li>
+  </ul>
+</section>
+
+
+<div id="flash_message" class="hidden">
+  <p>Pattern Changes Saved</p>
+</div>
+
+<% content_for :nav_links do %>
+  <li><a href="/projects">Projects</a></li>
+  <li><a href="/projects/new">New</a></li>
+<% end %>

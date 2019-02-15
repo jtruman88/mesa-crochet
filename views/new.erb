@@ -1,0 +1,65 @@
+<h2>New Project</h2>
+<form action="/projects/new" method="post">
+  <fieldset>
+    <label for="name">Project Name:</label>
+    <input required type="text" name="name" value="" autocomplete="off">
+  </fieldset>
+  <fieldset>
+    <label for="yarn">Yarn Brand:</label>
+    <input required type="text" name="yarn" value="" autocomplete="off">
+  </fieldset>
+  <fieldset>
+    <label for="colors">Colors:</label>
+    <input required type="text" name="colors" value="" autocomplete="off">
+  </fieldset>
+  <fieldset>
+    <label for="weight">Weight:</label>
+    <input required type="text" name="weight" value="" autocomplete="off">
+  </fieldset>
+  <fieldset>
+    <label for="for">Making For:</label>
+    <input type="text" name="for" value="" autocomplete="off">
+  </fieldset>
+  <fieldset>
+    <label for="hook">Hook Size:</label>
+    <input type="text" name="hook" value="" autocomplete="off">
+  </fieldset>
+  <fieldset>
+    <label for="link">Original Pattern URL:</label>
+    <input type="text" name="link" value="" autocomplete="off">
+  </fieldset>
+  <fieldset>
+    <label for="status">Status:</label>
+    <div id="radio-container">
+      <label class="radio">
+        <input checked type="radio" name="status" value="Not Started">
+        <span>Not Started</span>
+      </label>
+      <label class="radio">
+        <input type="radio" name="status" value="In Progress">
+        <span>In Progress</span>
+      </label>
+      <label class="radio">
+        <input type="radio" name="status" value="Finished">
+        <span>Finished</span>
+      </label>
+    </div>
+  </fieldset>
+  <fieldset>
+    <label for="pattern">Pattern:</label>
+    <textarea name="pattern"></textarea>
+  </fieldset>
+  <fieldset>
+    <label for="notes">Notes:</label>
+    <textarea name="notes"></textarea>
+  </fieldset>
+  <div id="form-btns">
+    <input type="submit" value="Add Project">
+    <a href="/projects">Cancel</a>
+  </div>
+</form>
+
+<% content_for :nav_links do %>
+  <li><a href="/projects">Projects</a></li>
+  <li><a class="active" href="/projects/new">New</a></li>
+<% end %>

@@ -1,0 +1,65 @@
+<h2>Editing "<%= @project[:name] %>" Project</h2>
+<form action="/projects/<%= @project[:id] %>/edit" method="post">
+  <fieldset>
+    <label for="name">Project Name:</label>
+    <input required type="text" name="name" value="<%= @project[:name] %>" autocomplete="off">
+  </fieldset>
+  <fieldset>
+    <label for="yarn">Yarn Brand:</label>
+    <input required type="text" name="yarn" value="<%= @project[:yarn] %>" autocomplete="off">
+  </fieldset>
+  <fieldset>
+    <label for="colors">Colors:</label>
+    <input required type="text" name="colors" value="<%= @project[:colors] %>" autocomplete="off">
+  </fieldset>
+  <fieldset>
+    <label for="weight">Weight:</label>
+    <input required type="text" name="weight" value="<%= @project[:weight] %>" autocomplete="off">
+  </fieldset>
+  <fieldset>
+    <label for="for">Making For:</label>
+    <input type="text" name="for" value="<%= @project[:for] %>" autocomplete="off">
+  </fieldset>
+  <fieldset>
+    <label for="hook">Hook Size:</label>
+    <input type="text" name="hook" value="<%= @project[:hook] %>" autocomplete="off">
+  </fieldset>
+  <fieldset>
+    <label for="link">Original Pattern URL:</label>
+    <input type="text" name="link" value="<%= @project[:link] %>" autocomplete="off">
+  </fieldset>
+  <fieldset>
+    <label for="status">Status:</label>
+    <div id="radio-container">
+      <label class="radio">
+        <input <%= ('checked' if @project[:status] == 'Not Started') %> type="radio" name="status" value="Not Started">
+        <span>Not Started</span>
+      </label>
+      <label class="radio">
+        <input <%= ('checked' if @project[:status] == 'In Progress') %> type="radio" name="status" value="In Progress">
+        <span>In Progress</span>
+      </label>
+      <label class="radio">
+        <input <%= ('checked' if @project[:status] == 'Finished') %> type="radio" name="status" value="Finished">
+        <span>Finished</span>
+      </label>
+    </div>
+  </fieldset>
+  <fieldset>
+    <label for="pattern">Pattern:</label>
+    <textarea name="pattern"><%= @project[:pattern] %></textarea>
+  </fieldset>
+  <fieldset>
+    <label for="notes">Notes:</label>
+    <textarea name="notes" cols="40" rows="5"><%= @project[:notes] %></textarea>
+  </fieldset>
+  <div id="form-btns">
+    <input type="submit" value="Save Changes">
+    <a href="/projects/<%= @id %>">Cancel</a>
+  </div>
+</form>
+
+<% content_for :nav_links do %>
+  <li><a href="/projects">Projects</a></li>
+  <li><a href="/projects/new">New</a></li>
+<% end %>

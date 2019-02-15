@@ -1,0 +1,387 @@
+@import url(reset.css);
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+
+@font-face {
+  font-family: "bromello";
+  src: url(../fonts/bromello.otf);
+}
+
+@font-face {
+  font-family: "Chalker";
+  src: url(../fonts/Chalker.otf);
+}
+
+/*
+
+----------------------- FONTS --------------------------------
+
+GENERAL
+font-family: 'Amatic SC', cursive;
+
+HEADINGS
+font-family: "bromello", cursive;
+
+*----------------------- COLORS --------------------------------
+
+TEAL   - #91BFB0
+RED    - #F88379 - rgb(248, 131, 121);
+YELLOW - #f3db7e - rgba(243, 219, 126, 0.6)
+
+*/
+
+/*----------------------- GENERAL --------------------------------*/
+
+html {
+  font: bold 50px 'Chalker', cursive;
+}
+
+.hidden {
+  display: none;
+}
+
+section#flash-messages {
+  margin: 140px 0 20px 0;
+}
+
+#flash-messages .success {
+  background: #f6e6ab;
+  color: #F88379;
+  font: bold 40px 'Chalker', cursive;
+  padding: 15px 0;
+  text-align: center;
+}
+
+main {
+  margin: 0 0 100px 0;
+}
+
+/*----------------------- HEADER --------------------------------*/
+
+header {
+  background: #fff;
+  border: 1px solid #000;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+header h1 {
+  background: #F88379;
+  color: #fff;
+  font: normal 60px "bromello", cursive;
+  height: 100%;
+  padding: 10px 0;
+  text-align: center;
+}
+
+/*-----------------------  FOOTER / NAV --------------------------------*/
+
+nav {
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+nav ul {
+  display: flex;
+  align-content: center;
+}
+
+nav ul li {
+  flex: 1;
+}
+
+nav li a {
+  background: #F88379;
+  border: 1px solid #000;
+  color: #fff;
+  display: block;
+  font-weight: bold;
+  padding: 20px 0;
+  text-align: center;
+  width: 100%;
+}
+
+a.active {
+  background: #CF6D65;
+}
+
+/*----------------------- MAIN / PROJECTS --------------------------------*/
+
+#no-projects h2 {
+  font: bold 38px "bromello", cursive;
+  margin-top: 50px;
+  text-align: center;
+}
+
+ul#projects li a {
+  background: rgba(243, 219, 126, 0.6);
+  border-radius: 12px;
+  color: #F88379;
+  display: block;
+  font: bold 54px 'Chalker', cursive;
+  margin: 0 auto 10px auto;
+  padding: 17px 0;
+  text-align: center;
+  width: 80%;
+}
+
+ul#projects li a.not_started {
+/*  border: 3px solid red;*/
+}
+
+ul#projects li a.in_progress {
+/*  border: 3px solid yellow;*/
+}
+
+ul#projects li a.finished {
+/*  border: 3px solid green;*/
+}
+
+/*----------------------- PROJECT --------------------------------*/
+
+div#flash_message {
+  background: #f6e6ab;
+  font: bold 48px 'Chalker', cursive;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  top: 80px;
+}
+
+img#project-img {
+  display: block;
+  margin: 0 auto;
+  width: 98%;
+  height: auto;
+}
+
+section.upload {
+  margin: 0 0 20px 12px;;
+}
+
+.upload form {
+  display: inline-block;
+}
+
+.upload form input[type="submit"],
+.upload label {
+  background: #91BFB0;
+  color: #fff;
+  display: inline-block;
+  font: bold 48px 'Chalker', cursive;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+  width: 300px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+#project-info h3,
+#project-info ul,
+#project-info > a {
+  color: #F88379;
+  margin: 0 0 0 12px;
+}
+
+#project-info section {
+  margin: 20px 0;
+}
+
+#project-info h3 {
+  font: bold 48px "bromello", cursive;
+  margin-bottom: 10px;
+}
+
+#project-info ul li {
+  font-size: 32px;
+}
+
+#project-info ul li.label,
+#project-info ul li.value {
+  display: inline-block;
+  font-size: 60px;
+}
+
+#project-info ul li.label {
+  margin-right: 10px;
+  text-align: right;
+  width: 230px;
+}
+
+section section > a {
+  background: #91BFB0;
+  color: #fff;
+  display: block;
+  font: bold 48px 'Chalker', cursive;
+  margin: 0 0 10px 12px;
+  padding: 10px 0;
+  text-align: center;
+  width: 320px;
+}
+
+#project-info section form {
+  margin-bottom: 10px;
+}
+
+#project-info section form textarea {
+  font-size: 24px;
+  height: 500px;
+  margin-bottom: 10px;
+}
+
+#project-info section form input {
+  background: #91BFB0;
+  color: #fff;
+  flex: 1;
+  font: bold 48px 'Chalker', cursive;
+  margin-left: 12px;
+  padding: 10px;
+}
+
+ul#project-btns {
+  display: flex;
+  justify-content: space-between;
+  margin: 40px 12px 40px 12px;
+}
+
+ul#project-btns a {
+  background: #91BFB0;
+  color: #fff;
+  display: block;
+  font: bold 48px 'Chalker', cursive;
+  padding: 10px 0;
+  text-align: center;
+  width: 220px;
+}
+
+ul#project-btns form input {
+  background: #91BFB0;
+  color: #fff;
+  font: bold 48px 'Chalker', cursive;
+  padding: 10px;
+  width: 220px;
+}
+
+/*----------------------- FORM PAGES --------------------------------*/
+
+h2 {
+  color: #F88379;
+  font: bold 60px "bromello", cursive;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+fieldset {
+  margin: 10px 0;
+}
+
+fieldset label {
+  color: #F88379;
+  display: block;
+  font-size: 48px;
+  margin-left: 12px;
+  padding: 5px 0;
+}
+
+fieldset input[type="text"] {
+  background: rgba(243, 219, 126, 0.6);
+  border-radius: 12px;
+  color: #fff;
+  display: block;
+  font-size: 42px;
+  margin: 0 auto;
+  padding: 10px;
+  width: 95%;
+}
+
+fieldset input[type="text"]:focus {
+  background: rgba(243, 219, 126, 0.8);
+}
+
+textarea {
+  background: rgba(243, 219, 126, 0.6);
+  border-radius: 8px;
+  display: block;
+  font-size: 12px;
+  height: 100px;
+  margin: 0 auto;
+  width: 97%;
+}
+
+textarea:focus {
+  background: rgba(243, 219, 126, 0.8);
+}
+
+div#form-btns {
+  display: flex;
+  justify-content: space-around;
+}
+
+div#form-btns input[type="submit"] {
+  background: #91BFB0;
+  color: #fff;
+  flex: 1;
+  font: bold 48px 'Chalker', cursive; 
+  margin-left: 12px;
+  padding: 10px;
+}
+
+form div#form-btns a {
+  background: #91BFB0;
+  color: #fff;
+  display: inline-block;
+  flex: 1;
+  font-size: 42px;
+  margin-left: 12px;
+  padding: 15px;
+  text-align: center;
+}
+
+/*----------------------- RADIO INPUTS --------------------------------*/
+
+#radio-container {
+  display: flex;
+  justify-content: space-around;
+  margin-right: 10px;
+}
+
+label.radio {
+  display: inline-block;
+  width: auto;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.radio span {
+  vertical-align: top;
+}
+
+.radio span::before {
+  background: url(../images/radio_unchecked.png) no-repeat 0 0;
+  background-size: 100%;
+  border-radius: 100%;
+  content: '';
+  display: inline-block;
+  height: 60px;
+  margin-right: 10px;
+  width: 60px;
+}
+
+input[type="radio"]:checked + span::before {
+  background: url(../images/radio_checked.png) no-repeat 0 0;
+  background-size: 100%;
+  border-radius: 100%;
+  content: '';
+  display: inline-block;
+  height: 60px;
+  margin-right: 10px;
+  width: 60px;
+}

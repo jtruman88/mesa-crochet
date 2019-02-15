@@ -1,0 +1,18 @@
+<ul id="projects">
+  <% sort_by_status(@projects).each do |project| %>
+    <li data-id="<%= project[:id] %>">
+      <a class="<%= add_class(project) %>" href="/projects/<%= project[:id] %>"><%= project[:name] %></a>
+    </li>
+  <% end %>
+</ul>
+
+<% if @projects.length == 0 %>
+  <section id="no-projects">
+    <h2>Click "New" To add a project</h2>
+  </section>
+<% end %>
+
+<% content_for :nav_links do %>
+  <li><a class="active" href="/projects">Projects</a></li>
+  <li><a href="/projects/new">New</a></li>
+<% end %>
