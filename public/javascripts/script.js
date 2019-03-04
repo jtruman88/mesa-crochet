@@ -17,7 +17,7 @@ $(function() {
     
     function hideEditPattern() {
       let $anchor = $('#pattern > a');
-      let $patternText = $('#pattern article');
+      let $patternText = $('#pattern pre');
       let $patternForm = $('#pattern section');
       
       updatePatternText();
@@ -28,7 +28,7 @@ $(function() {
     }
     
     function updatePatternText() {
-      $('#pattern article').text($('[data-id="pattern"]').val());
+      $('#pattern pre').text($('[data-id="pattern"]').val());
     }
     
     function updateNotes(e) {
@@ -51,9 +51,8 @@ $(function() {
     function showEditPattern(e) {
       e.preventDefault();
       let $anchor = $('#pattern > a');
-      let $patternText = $('#pattern article');
+      let $patternText = $('#pattern pre');
       let $patternForm = $('#pattern section');
-      
       
       $anchor.addClass('hidden');
       $patternText.addClass('hidden');

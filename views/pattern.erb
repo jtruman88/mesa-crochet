@@ -1,9 +1,9 @@
 <h2>Pattern for " <%= @project[:name] %> "</h2>
 <section id="pattern">
   <a data-id="edit-pattern" href="#">Edit Pattern</a>
-  <article>
+  <pre>
     <%= @project[:pattern] %>
-  </article>
+  </pre>
   <section class="hidden">
     <form id="pattern_form" action="/projects/<%= @project[:id] %>/update_pattern" method="post">
       <textarea data-id="pattern" name="pattern"><%= @project[:pattern] %></textarea>

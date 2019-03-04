@@ -278,9 +278,13 @@ section#pattern {
   margin: 0 0 0 12px;
 }
 
-#pattern article {
+#pattern pre {
   font: 34px normal sans-serif;
   margin-top: 20px;
+  white-space: -moz-pre-wrap; /* Mozilla, supported since 1999 */
+  white-space: -pre-wrap; /* Opera */
+  white-space: -o-pre-wrap; /* Opera */
+  white-space: pre-wrap;
 }
 
 #pattern > a {
