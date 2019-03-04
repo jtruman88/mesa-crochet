@@ -148,12 +148,12 @@ div#flash_message {
   text-align: center;
   width: 100%;
   position: fixed;
-  top: 80px;
+  top: 115px;
 }
 
 img#project-img {
   display: block;
-  margin: 0 auto;
+  margin: 0 auto 10px auto;
   width: 98%;
   height: auto;
 }
@@ -176,6 +176,10 @@ section.upload {
   padding: 10px;
   text-align: center;
   width: 300px;
+}
+
+.upload form input[type="submit"].hidden {
+  display: none;
 }
 
 input[type="file"] {
@@ -266,6 +270,45 @@ ul#project-btns form input {
   font: bold 48px 'Chalker', cursive;
   padding: 10px;
   width: 220px;
+}
+
+/*----------------------- PATTERN --------------------------------*/
+
+section#pattern {
+  margin: 0 0 0 12px;
+}
+
+#pattern article {
+  font: 34px normal sans-serif;
+  margin-top: 20px;
+}
+
+#pattern > a {
+  background: #91BFB0;
+  color: #fff;
+  display: block;
+  font: bold 48px 'Chalker', cursive;
+  margin: 0 auto;
+  padding: 10px 0;
+  text-align: center;
+  width: 220px;
+}
+
+#pattern > a.hidden {
+  display: none;
+}
+
+#pattern_form textarea {
+  height: 1200px;
+}
+
+#pattern_form input[type="submit"] {
+  background: #91BFB0;
+  color: #fff;
+  flex: 1;
+  font: bold 48px 'Chalker', cursive; 
+  margin: 20px 0 0 12px;
+  padding: 10px;
 }
 
 /*----------------------- FORM PAGES --------------------------------*/
@@ -384,4 +427,8 @@ input[type="radio"]:checked + span::before {
   height: 60px;
   margin-right: 10px;
   width: 60px;
+}
+
+@media screen and (min-width: 481px) {
+  /* CSS for tablets and larger */
 }

@@ -6,9 +6,8 @@
       <input type="hidden" name="old_image" value="<%= @project[:image] %>">
       <label for="file">Choose Image...</label>
       <input id="file" type="file" name="file" accept="image/png, image/jpeg">
-      <input type="submit" value="Update Image">
+      <input class="save_img hidden" type="submit" value="Update Image">
     </form>
-    or
     <form action="/projects/<%= @id %>/delete_image" method="post">
       <input type="hidden" name="old_image" value="<%= @project[:image] %>">
       <input type="submit" value="Delete Image">
@@ -19,7 +18,7 @@
     <form action="/projects/<%= @id %>/image" method="post" enctype="multipart/form-data">
       <label for="file">Choose Image...</label>
       <input id="file" type="file" name="file" accept="image/png, image/jpeg">
-      <input type="submit" value="Save Image">
+      <input class="save_img hidden" type="submit" value="Save Image">
     </form>
   </section>
 <% end %>
@@ -50,11 +49,7 @@
       <a target="_blank" href="<%= @project[:link] %>">Go To Original Site</a>
     <% end %>
 
-    <a data-id="show-pattern" href="#">Show Pattern</a>
-    <form id="pattern" class="hidden" action="/projects/<%= @id %>/update_pattern" method="post">
-      <textarea data-id="pattern" name="pattern"><%= @project[:pattern] %></textarea>
-      <input type="submit" value="Save Changes">
-    </form>
+    <a href="/projects/<%= @id %>/pattern">View Pattern</a>
 
     <a data-id="show-notes" href="#">Show Notes</a>
     <form id="notes" class="hidden" action="/projects/<%= @id %>/update_notes" method="post">

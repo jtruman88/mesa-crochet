@@ -105,6 +105,13 @@ get '/projects/:id/edit' do
   erb :edit
 end
 
+get '/projects/:id/pattern' do
+  id = params[:id]
+  @project = @db.get_project_info(id).first
+  
+  erb :pattern
+end
+
 post '/projects/:id/edit' do
   id = params[:id]
   name = params[:name]

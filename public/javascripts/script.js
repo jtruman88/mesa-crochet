@@ -11,9 +11,24 @@ $(function() {
     function updatePattern(e) {
       e.preventDefault();
       let $form = $(e.target);
-      let message = "Pattern was updated"
       
-      ajax.updateProject($form, flashMessage.bind(null, message));
+      ajax.updateProject($form, hideEditPattern);
+    }
+    
+    function hideEditPattern() {
+      let $anchor = $('#pattern > a');
+      let $patternText = $('#pattern article');
+      let $patternForm = $('#pattern section');
+      
+      updatePatternText();
+      $anchor.removeClass('hidden');
+      $patternText.removeClass('hidden');
+      $patternForm.addClass('hidden');
+      flashMessage('Pattern successfully updated');
+    }
+    
+    function updatePatternText() {
+      $('#pattern article').text($('[data-id="pattern"]').val());
     }
     
     function updateNotes(e) {
@@ -33,11 +48,16 @@ $(function() {
       }, 2000);
     }
     
-    function togglePattern(e) {
+    function showEditPattern(e) {
       e.preventDefault();
+      let $anchor = $('#pattern > a');
+      let $patternText = $('#pattern article');
+      let $patternForm = $('#pattern section');
       
-      toggleText($(e.target), 'Pattern');
-      $('#pattern').toggleClass('hidden');
+      
+      $anchor.addClass('hidden');
+      $patternText.addClass('hidden');
+      $patternForm.removeClass('hidden');
     }
     
     function toggleNotes(e) {
@@ -64,26 +84,29 @@ $(function() {
       }
     }
     
-    function updateLabelText(e) {
+    function handleFileInput(e) {
       let $input = $(e.target);
+      let $submit = $('.save_img');
       let subStrs = $input.val().split('\\');
       let fileName = subStrs[subStrs.length - 1];
       let $label = $input.siblings('label');
       
       if (fileName) {
         $label.text(fileName);
+        $submit.removeClass('hidden');
       } else {
         $label.text('Choose Image...');
+        $submit.addClass('hidden');
       }
     }
     
     return {
       bindEvents: function() {
-        $(document).on('submit', '#pattern', updatePattern);
+        $(document).on('submit', '#pattern_form', updatePattern);
         $(document).on('submit', '#notes', updateNotes);
         $(document).on('submit', '#delete', handleDelete);
-        $(document).on('change', 'input[type="file"]', updateLabelText);
-        $(document).on('click', '[data-id="show-pattern"]', togglePattern);
+        $(document).on('change', 'input[type="file"]', handleFileInput);
+        $(document).on('click', '[data-id="edit-pattern"]', showEditPattern);
         $(document).on('click', '[data-id="show-notes"]', toggleNotes);
       }
     };

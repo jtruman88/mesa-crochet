@@ -1,0 +1,24 @@
+<h2>Pattern for " <%= @project[:name] %> "</h2>
+<section id="pattern">
+  <a data-id="edit-pattern" href="#">Edit Pattern</a>
+  <article>
+    <%= @project[:pattern] %>
+  </article>
+  <section class="hidden">
+    <form id="pattern_form" action="/projects/<%= @project[:id] %>/update_pattern" method="post">
+      <textarea data-id="pattern" name="pattern"><%= @project[:pattern] %></textarea>
+      <input type="submit" value="Save Changes">
+    </form>
+  </section>
+</section>
+
+
+<div id="flash_message" class="hidden">
+  <p>Pattern Changes Saved</p>
+</div>
+
+<% content_for :nav_links do %>
+  <li><a href="/projects">Projects</a></li>
+  <li><a href="/projects/new">New</a></li>
+  <li><a href="/projects/<%= @project[:id] %>">Back</a></li>
+<% end %>
